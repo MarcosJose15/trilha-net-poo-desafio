@@ -1,22 +1,52 @@
-# DIO - Trilha .NET - Programação orientada a objetos
-www.dio.me
+# Trilha-Net-MVC-Desafio
+# Trilha .NET - MVC e Entity Framework
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de orientação a objetos, da trilha .NET da DIO.
 
-## Contexto
-Você é responsável por modelar um sistema que trabalha com celulares. Para isso, foi solicitado que você faça uma abstração de um celular e disponibilize maneiras de diferentes marcas e modelos terem seu próprio comportamento, possibilitando um maior reuso de código e usando a orientação a objetos.
+## Desafio: Gerenciador de Tarefas - MVC
 
-## Proposta
-Você precisa criar um sistema em .NET, do tipo console, mapeando uma classe abstrata e classes específicas para dois tipos de celulares: Nokia e iPhone. 
-Você deve criar as suas classes de acordo com o diagrama abaixo:
+Este repositório contém a solução para o desafio proposto no módulo de **API e Entity Framework** da trilha .NET da [DIO](https://web.dio.me).
 
-![Diagrama classes](Imagens/diagrama.png)
+📷 **Imagem da Página de Tarefa**
+<img width="1220" height="380" alt="ListaTarefas" src="https://github.com/user-attachments/assets/38673881-b229-46ca-b543-530faf6d5622" />
 
-## Regras e validações
-1. A classe **Smartphone** deve ser abstrata, não permitindo instanciar e servindo apenas como modelo.
-2. A classe **Nokia** e **Iphone** devem ser classes filhas de Smartphone.
-3. O método **InstalarAplicativo** deve ser sobrescrito na classe Nokia e iPhone, pois ambos possuem diferentes maneiras de instalar um aplicativo.
+## 📌 Descrição do Projeto
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+O projeto consiste em um sistema **MVC** que permite gerenciar tarefas do dia a dia com as funcionalidades completas de um CRUD (Criar, Listar, Editar e Deletar).
+
+O objetivo é aplicar os conceitos aprendidos em Entity Framework e ASP.NET MVC para construir uma aplicação prática e funcional.
+
+---
+
+## ✅ Funcionalidades
+
+- ✅ 📷**Criar nova tarefa**
+  <img width="631" height="532" alt="CadastrarTarefa" src="https://github.com/user-attachments/assets/4045c210-f909-409d-9511-364530652c36" />
+
+- ✅ 📷**Editar tarefa existente**
+- <img width="840" height="615" alt="Date" src="https://github.com/user-attachments/assets/013703d8-8bd3-4514-b2aa-18da6cdafa1e" />
+
+- ✅ 📷**Deletar tarefa**
+  <img width="877" height="455" alt="Deletar" src="https://github.com/user-attachments/assets/150e310a-29dc-4fe6-93b7-1ada53be70a1" />
+
+- ✅ 📷**Listar todas as tarefas**
+ <img width="1220" height="380" alt="ListaTarefas" src="https://github.com/user-attachments/assets/09fb52e8-a676-408f-b1ea-d9fb2fb11d69" />
+
+- ✅ 📷**Filtrar tarefas por:**
+  - Título
+  - Data
+  - Status
+
+---
+
+## 🧱 Estrutura da Classe Principal (`Tarefa`)
+
+```csharp
+public class Tarefa
+{
+    public int Id { get; set; }
+    public string Titulo { get; set; }
+    public string Descricao { get; set; }
+    public DateTime Data { get; set; }
+    public EnumStatusTarefa Status { get; set; }
+}
+

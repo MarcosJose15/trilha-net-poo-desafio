@@ -1,12 +1,32 @@
-﻿using DesafioPOO.Models;
+using Microsoft.EntityFrameworkCore;
+using Trilha_Net_MVC_Desafio.Context;
 
-// TODO: Realizar os testes com as classes Nokia e Iphone
-Nokia Nok1 = new Nokia("123456", "Nokia-S", "C4:G4:B4:C6", 500);
-Iphone Iphone1 = new Iphone("123477", "Iphone-XS", "C7:G7:B7:C7", 500);
+var builder = WebApplication.CreateBuilder(args);
 
-Nok1.Ligar();
-Iphone1.Ligar(); 
-Nok1.ReceberLigacao();
-Iphone1.ReceberLigacao();
-Nok1.InstalarAplicativo("NETFLIX APP");
-Iphone1.InstalarAplicativo("APPLE APP");
+// Add services to the container.
+builder.Services.AddDbContext<OrganizadorContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
+
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
